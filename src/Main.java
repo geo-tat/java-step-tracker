@@ -28,15 +28,15 @@ public class Main {
                 System.out.println("Укажите номер месяца (1-12)");
                 int month = scanner.nextInt();
                 if (month>0 & month<13) {
-                    stepTracker.allStepsForMonth(month); // Метод количества пройденных шагов по каждому дню за выбранный месяц
-                    stepTracker.sumAllSteps(month);      // Метод общего количества шагов за месяц
-                    stepTracker.maxSteps(month);   // Метод максимально пройденного количества шагов за день в месяц
-                    stepTracker.averageSteps(month);// Метод среднего количества шагов за месяц
-                    stepTracker.kmDist(month); // Пройденная дистанция в км и сожженых кк
+                    stepTracker.allStepsForMonth(month);
+                    stepTracker.sumAllSteps(month);
+                    stepTracker.maxSteps(month);
+                    stepTracker.averageSteps(month);
+                    stepTracker.kmDist(month);
                     stepTracker.bestSeries(month);
                 }
                 else {
-                    System.out.println("Такого месяца не сущевтсвует.");// Лучшая серия: максимальное количество подряд идущих дней, в течение которых количество шагов за день было равно или выше целевого.
+                    System.out.println("Такого месяца не существует.");
                 }
             } else if(userInput == 3) {
                 System.out.println("Ведите новую цель");
@@ -46,8 +46,8 @@ public class Main {
                 System.out.println("Извините, но такой команды нет");
             }
 
-            printMenu(); // печатаем меню ещё раз перед завершением предыдущего действия
-            userInput = scanner.nextInt(); // повторное считывание данных от пользователя
+            printMenu();
+            userInput = scanner.nextInt();
         }
         System.out.println("Программа завершена");
 

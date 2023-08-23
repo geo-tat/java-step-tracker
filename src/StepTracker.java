@@ -9,11 +9,12 @@ public class StepTracker {
         }
     }
 
-    public void stepsForDay(int month, int day, int steps) {    // Метод для введения шагов за каждый день
+    public void stepsForDay(int month, int day, int steps) {
         MonthData monthToPut = monthToData[month];
-        monthToPut.days[day-1] = steps;
+        monthToPut.days[day - 1] = steps;
     }
-    void changeGoalStep(int stepGoal) {                          // Метод для изменения цели по количеству шагов
+
+    void changeGoalStep(int stepGoal) {
         if (stepGoal > 0) {
             this.stepGoal = stepGoal;
             System.out.println("Сейчас цель: " + this.stepGoal);
@@ -23,32 +24,32 @@ public class StepTracker {
 
     }
 
-    public void allStepsForMonth(int month) {                    // Метод выдачи статистики по дням
+    public void allStepsForMonth(int month) {
         MonthData allStepsForMonth = monthToData[month];
-        for(int i = 0; i < allStepsForMonth.days.length; i++) {
-            if(i<29) {
-                System.out.print((i+1) + " день: " + allStepsForMonth.days[i] + ", ");
+        for (int i = 0; i < allStepsForMonth.days.length; i++) {
+            if (i < 29) {
+                System.out.print((i + 1) + " день: " + allStepsForMonth.days[i] + ", ");
             } else {
-                System.out.println((i+1) + " день: " + allStepsForMonth.days[i] + ". ");
+                System.out.println((i + 1) + " день: " + allStepsForMonth.days[i] + ". ");
             }
         }
     }
 
-    public void sumAllSteps(int month) {                            // Метод общего количества шагов за месяц
+    public void sumAllSteps(int month) {
         int sum = 0;
         MonthData sumAllSteps = monthToData[month];
-        for(int i = 0; i<sumAllSteps.days.length; i++){
+        for (int i = 0; i < sumAllSteps.days.length; i++) {
             sum = sum + sumAllSteps.days[i];
         }
         System.out.println("Общее количество шагов за месяц: " + sum);
     }
 
-    public void maxSteps(int month) {                                // Метод максимального количество шагов за день в месяце
+    public void maxSteps(int month) {
         int max = 0;
         MonthData maxSteps = monthToData[month];
-        for(int i=0; i<maxSteps.days.length; i++)
-            if(maxSteps.days[i]>max) {
-                max=maxSteps.days[i];
+        for (int i = 0; i < maxSteps.days.length; i++)
+            if (maxSteps.days[i] > max) {
+                max = maxSteps.days[i];
             }
         System.out.println(max + " - максимальное количество шагов за день в этом месяце.");
     }
@@ -57,7 +58,7 @@ public class StepTracker {
         double average = 0;
         int sum = 0;
         MonthData averageSteps = monthToData[month];
-        for(int i=0; i<averageSteps.days.length; i++){
+        for (int i = 0; i < averageSteps.days.length; i++) {
             sum = sum + averageSteps.days[i];
         }
         average = sum / averageSteps.days.length;
@@ -68,7 +69,7 @@ public class StepTracker {
         MonthData kmDist = monthToData[month];
         Converter convert = new Converter();
         int steps = 0;
-        for(int i = 0; i<kmDist.days.length; i++){
+        for (int i = 0; i < kmDist.days.length; i++) {
             steps = steps + kmDist.days[i];
         }
         convert.converter(steps);
@@ -78,17 +79,15 @@ public class StepTracker {
         MonthData bestSeries = monthToData[month];
         int count = 0;
         int maxCount = 0;
-        for(int i=0; i<bestSeries.days.length; i++) {
-            if(bestSeries.days[i] >= stepGoal) {
+        for (int i = 0; i < bestSeries.days.length; i++) {
+            if (bestSeries.days[i] >= stepGoal) {
                 count = count + 1;
-                if(maxCount < count) {
-                    maxCount=count;
+                if (maxCount < count) {
+                    maxCount = count;
                 }
-
             } else {
                 count = 0;
             }
-
         }
         System.out.println("Лучшая серия - " + maxCount + " дней.");
     }
